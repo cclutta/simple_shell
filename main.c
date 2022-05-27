@@ -35,7 +35,6 @@ void exec_command(char *comm)
 		if (execve(argv[0], argv, NULL) < 0)
 		{
 			printf("\nCould not execute command\n");
-			free(argv);
 		}
 		exit(0);
 	}
