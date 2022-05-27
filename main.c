@@ -1,14 +1,19 @@
 #include "main.h"
-
+/**
+* exec_command - executes commands
+* @comm: to be executed
+*
+* Return: void
+*/
 void exec_command(char *comm)
 {
 	pid_t pid;
 	char path[128] = "/bin/";
 	char *argv[3];
 	char exit_c[5] = "exit";
-	
-	
-	if(strcmp(exit_c, comm) == 0){
+
+	if(strcmp(exit_c, comm) == 0)
+	{
 	printf("Goodbye");
 	exit(1);
 	}
@@ -20,28 +25,44 @@ void exec_command(char *comm)
 	
 	pid = fork();
 	
-	if(pid == -1){
+	if(pid == -1)
+	{
 		printf("\nfailed fork");
 		return;
-	} else if (pid == 0) {
-        if (execve(argv[0], argv, NULL) < 0) {
+	} 
+	else if (pid == 0)
+	{
+        if (execve(argv[0], argv, NULL) < 0)
+	{
             printf("\nCould not execute command\n");
         }
         exit(0);
 	}
-	else {
+	else 
+	{
         wait(NULL); 
         return;
     }
-	
-    printf("After execve\n");
 		
 }
 
+/**
+* get_null_bytes - get the null bytes
+* @str: string
+* @index: the index
+* 
+* Return: void
+*/
 void get_null_bytes(char *str, unsigned int index)
 {
 	str[index] = '\0';
 }
+
+/**
+* main - main entry point of progran
+*
+* Return: int
+*/
 int main(void)
 {
 char *buffer;
@@ -61,10 +82,14 @@ while (1){
 printf("$ ");
 chars = getline(&buffer, &bufsize, stdin);
 
-if(chars == -1){
- if (feof(stdin)) {
+if(chars == -1)
+{
+ if (feof(stdin))
+ {
       exit(EXIT_SUCCESS);
-    } else  {
+    } 
+else  
+{
       perror("readline");
       exit(EXIT_FAILURE);
     }
