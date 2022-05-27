@@ -6,7 +6,7 @@ void exec_command(char *comm)
 	char path[128] = "/bin/";
 	char *argv[3];
 	char exit_c[5] = "exit";
-	int ret;
+	
 	
 	if(strcmp(exit_c, comm) == 0){
 	printf("Goodbye");
@@ -46,7 +46,7 @@ int main(void)
 {
 char *buffer;
 size_t bufsize = 32;
-size_t chars;
+int chars;
 
 buffer = (char *)malloc(bufsize * sizeof(char));
 
@@ -63,7 +63,7 @@ chars = getline(&buffer, &bufsize, stdin);
 
 if(chars == -1){
  if (feof(stdin)) {
-      exit(EXIT_SUCCESS);  // We recieved an EOF
+      exit(EXIT_SUCCESS);
     } else  {
       perror("readline");
       exit(EXIT_FAILURE);
