@@ -42,7 +42,7 @@ void exec_command(char *comm)
 	{
 		wait(NULL);
 		return;
-	}	
+	}
 }
 
 /**
