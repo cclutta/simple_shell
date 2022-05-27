@@ -8,7 +8,7 @@
 void exec_command(char *comm)
 {
 	pid_t pid;
-	char path[128] = "/bin/";
+	char path[128] = "";
 	char *argv[3];
 	char exit_c[5] = "exit";
 
