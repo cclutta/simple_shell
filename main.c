@@ -19,7 +19,7 @@ void exec_command(char *comm)
 	}
 
 	strcat(path, comm);
-	
+
 	argv[0] = path;
 	argv[1] = NULL;
 
@@ -38,11 +38,11 @@ void exec_command(char *comm)
 		}
 		exit(0);
 	}
-	else 
+	else
 	{
 		wait(NULL);
 		return;
-	}		
+	}	
 }
 
 /**
@@ -81,7 +81,7 @@ while (1)
 {
 	printf("$ ");
 	chars = getline(&buffer, &bufsize, stdin);
-	if(chars == -1)
+	if (chars == -1)
 	{
 		if (feof(stdin))
 		{
