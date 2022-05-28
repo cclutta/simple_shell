@@ -34,7 +34,7 @@ void exec_command(char *comm)
 	{
 		if (execve(argv[0], argv, NULL) < 0)
 		{
-			printf("\nCcould not execute command\n");
+			printf("\nCould not execute command\n");
 		}
 		exit(0);
 	}
@@ -79,8 +79,8 @@ exit(1);
 
 while (1)
 {
-	write(STDERR_FILENO, "$ ", 2);
-
+	printf("$ ");
+	
 	chars = getline(&buffer, &bufsize, stdin);
 	if (chars == -1)
 	{
