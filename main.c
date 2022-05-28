@@ -79,7 +79,7 @@ exit(1);
 
 while (1)
 {
-	printf("$ ");
+	printf("$- ");
 	chars = getline(&buffer, &bufsize, stdin);
 	if (chars == -1)
 	{
