@@ -41,6 +41,7 @@ void exec_command(char *comm)
 	else
 	{
 		wait(NULL);
+		return;
 	}
 }
 
@@ -66,6 +67,7 @@ int main(void)
 char *buffer;
 size_t bufsize = 32;
 int chars;
+int p = 0;
 
 buffer = (char *)malloc(bufsize * sizeof(char));
 
@@ -78,7 +80,8 @@ exit(1);
 
 while (1)
 {
-	printf("$ ");
+	p++;
+	printf("$ %d", p);
 	
 	chars = getline(&buffer, &bufsize, stdin);
 	if (chars == -1)
