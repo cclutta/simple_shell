@@ -41,7 +41,6 @@ void exec_command(char *comm)
 	else
 	{
 		wait(NULL);
-		return;
 	}
 }
 
