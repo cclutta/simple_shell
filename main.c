@@ -79,7 +79,8 @@ exit(1);
 
 while (1)
 {
-	printf("$- ");
+	write(STDERR_FILENO, "$ ", 2);
+
 	chars = getline(&buffer, &bufsize, stdin);
 	if (chars == -1)
 	{
