@@ -95,6 +95,7 @@ while (1)
 			perror("readline");
 			exit(EXIT_FAILURE);
 		}
+		exit(EXIT_SUCCESS);
 	}
 	get_null_bytes(buffer, chars - 1);
 	exec_command(buffer);
@@ -102,3 +103,5 @@ while (1)
 	free(buffer);
 	return (0);
 }
+
+
