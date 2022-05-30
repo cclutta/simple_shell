@@ -11,6 +11,7 @@ void exec_command(char *comm)
 	char path[128] = "";
 	char *argv[3];
 	char exit_c[5] = "exit";
+	int status;
 
 	if (strcmp(exit_c, comm) == 0)
 	{
@@ -28,7 +29,7 @@ void exec_command(char *comm)
 	if (pid == -1)
 	{
 		printf("\nfailed fork");
-		return;
+		exit(1);
 	}
 	else if (pid == 0)
 	{
@@ -40,7 +41,7 @@ void exec_command(char *comm)
 	}
 	else
 	{
-		wait(NULL);
+		wait(&status);
 		return;
 	}
 }
@@ -95,7 +96,6 @@ while (1)
 			perror("readline");
 			exit(EXIT_FAILURE);
 		}
-		exit(EXIT_SUCCESS);
 	}
 	get_null_bytes(buffer, chars - 1);
 	exec_command(buffer);
