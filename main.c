@@ -13,12 +13,6 @@ void exec_command(char *comm)
 	char exit_c[5] = "exit";
 	int status;
 
-	if (strcmp(exit_c, comm) == 0)
-	{
-	printf("Goodbye");
-	exit(1);
-	}
-
 	strcat(path, comm);
 
 	argv[0] = path;
@@ -41,8 +35,8 @@ void exec_command(char *comm)
 	}
 	else
 	{
-		wait(&status);
-		return;
+		while(wait(&status) != pid)
+			;
 	}
 }
 
@@ -97,6 +91,12 @@ while (1)
 		}
 	}
 	get_null_bytes(buffer, chars - 1);
+	if (strcmp(buffer, "exit") == 0)
+	{
+	printf("Goodbye");
+	exit(1);
+	}
+
 	exec_command(buffer);
 }
 	free(buffer);
