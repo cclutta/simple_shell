@@ -68,7 +68,6 @@ int main(void)
 char *buffer;
 size_t bufsize = 32;
 int chars;
-int p = 0;
 
 buffer = (char *)malloc(bufsize * sizeof(char));
 
@@ -81,8 +80,8 @@ exit(1);
 
 while (1)
 {
-	p++;
-	printf("$ %d", p);
+
+	printf("$ ");
 	
 	chars = getline(&buffer, &bufsize, stdin);
 	if (chars == -1)
