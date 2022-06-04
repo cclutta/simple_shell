@@ -8,13 +8,10 @@
 void exec_command(char *comm)
 {
 	pid_t pid;
-	char path[128] = "";
 	char *argv[3];
 	int status;
 
-	strcat(path, comm);
-
-	argv[0] = path;
+	argv[0] = comm;
 	argv[1] = NULL;
 
 	pid = fork();
@@ -74,7 +71,7 @@ exit(1);
 while (1)
 {
 
-	printf("$ ");
+	write(STDERR_FILENO, "$ ", 2);
 	
 	chars = getline(&buffer, &bufsize, stdin);
 	if (chars == -1)
