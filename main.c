@@ -70,8 +70,11 @@ exit(1);
 
 while (1)
 {
-
-	write(STDERR_FILENO, "$ ", 2);
+	if (isatty(STDIN_FILENO))
+	{
+		write(STDERR_FILENO, "$ ", 2);
+	}
+	
 	
 	chars = getline(&buffer, &bufsize, stdin);
 	if (chars == -1)
